@@ -1,0 +1,43 @@
+name: Chocolatey Package Actions
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - ".editorconfig"
+      - ".vscode/**"
+      - "**.md"
+
+permissions: write-all
+
+jobs:
+  build_and_deploy:
+    runs-on: windows-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 1
+
+      - name: Pack Chocolatey Package
+        run: |
+          choco pack
+          $package = $(Get-ChildItem -Path . -Filter "t3-code*.nupkg")
+          Write-Host "Package packed: $($package.FullName)"
+
+      - name: Set up Chocolatey for Push
+        if: github.ref == 'refs/heads/main'
+        run: |
+          choco apikey --api-key ${{ secrets.CHOCO_API_KEY }} --source https://push.chocolatey.org/
+
+      - name: Push Chocolatey Package
+        if: github.ref == 'refs/heads/main'
+        run: |
+          $package = $(Get-ChildItem -Path . -Filter "t3-code*.nupkg" -Name)
+          choco push "$package" --source 'https://push.chocolatey.org/' -apiKey ${{ secrets.CHOCO_API_KEY }}
+        env:
+          CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
