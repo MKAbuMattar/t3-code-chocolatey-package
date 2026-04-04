@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>t3-code</id>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
     <title>T3 Code</title>
     <authors>t3.codes</authors>
     <owners>Mohammad Abu Mattar</owners>
@@ -66,7 +66,7 @@ choco install t3-code
 Install a specific version:
 
 ```powershell
-choco install t3-code --version 0.0.8
+choco install t3-code --version 0.0.9
 ```
 
 After installation, launch **T3 Code** from the Start Menu or your desktop shortcut.
@@ -111,7 +111,7 @@ This Chocolatey package is maintained by [@MKAbuMattar](https://github.com/MKAbu
 T3 Code itself is copyright © 2026 T3 Tools Inc., also under the [MIT License](https://github.com/pingdotgg/t3code/blob/main/LICENSE).
     ]]></description>
     <summary>T3 Code is a minimal web GUI for coding agents — the best way to code with AI. Codex-first, with Claude Code support coming soon.</summary>
-    <releaseNotes>https://github.com/pingdotgg/t3code/releases/tag/v0.0.8</releaseNotes>
+    <releaseNotes>https://github.com/pingdotgg/t3code/releases/tag/v0.0.9</releaseNotes>
     <tags>t3-code t3 ai coding-agent codex openai electron desktop gui chat developer-tools</tags>
     <packageSourceUrl>https://github.com/MKAbuMattar/t3-code-chocolatey-package</packageSourceUrl>
     <docsUrl>https://t3.codes/</docsUrl>
