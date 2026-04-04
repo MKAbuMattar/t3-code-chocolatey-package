@@ -95,7 +95,7 @@ choco install t3-code
 Install a specific version:
 
 ```powershell
-choco install t3-code --version 0.0.9
+choco install t3-code --version 0.0.10
 ```
 
 After installation, launch **T3 Code** from the Start Menu or your desktop shortcut.
